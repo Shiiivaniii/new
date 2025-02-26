@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebf0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        h1 {
+            color: #ff4081;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50% 50% 50% 50%;
+            opacity: 0.7;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello Sameer Sir,<br>As the party nears the day<br>I wonder if there's a chance to say--<br>Tomorrow will be special,no doubt<br>If you'd join me and step right out<br>
+            So with a hopeful heart,<br>I ask,before the day can start--<br><b>❤️ Will you accompany me for the fresher's party?? ❤️</b></h1>
+           
+            <h6>☠️Warning!! No isn't an option☠️</h6>
+            <h3 style="text-align: right;">~~~From Shivani</h3>
+        <div class="buttons">
+            <button class="yes" onclick="alert('Aapne accept kar liya....❤️ Thanks a lot Sir!!')">Yes</button>
+            <button class="no" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+    <script>
+        function moveButton() {
+            let button = document.querySelector('.no');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function createBalloons() {
+            for (let i = 0; i < 20; i++) {
+                let balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                balloon.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(balloon);
+                setTimeout(() => { balloon.remove(); }, 5000);
+            }
+        }
+        setInterval(createBalloons, 1000);
+    </script>
+</body>
+</html>
